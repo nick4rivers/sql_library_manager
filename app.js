@@ -15,12 +15,24 @@ app.use("/static", express.static("public"));
 
 // ------------------ ROUTES ---------------------------
 
+// TODO: add redirect
 app.get("/", (req, res) => {
   res.render("layout");
 });
 
+// all books
+app.get("/books", (req, res) => {
+  res.render("books");
+});
+
+// book detail/update
 app.get("/detail", (req, res) => {
   res.render("detail");
+});
+
+// create new book
+app.get("/create", (req, res) => {
+  res.render("create");
 });
 
 // ------------------------ Server ---------------------------
