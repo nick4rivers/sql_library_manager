@@ -93,6 +93,9 @@ input {
 input[type="text"] {
   margin-left: 7px;
   width: 300px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: darkgray;
 }
 
 .error {
