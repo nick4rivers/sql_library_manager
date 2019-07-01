@@ -1,6 +1,6 @@
 body {
   padding: 10px 50px 50px;
-  font: 18px "Garamond", serif;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -18,7 +18,6 @@ a.button,
 input[type="submit"] {
   color: white;
   background: #019875;
-  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 10px 14px 12px;
   font-size: 14px;
   border-radius: 2px;
@@ -63,7 +62,7 @@ th {
 }
 
 tr {
-  min-height: 50px;
+  min-height: 60px;
 }
 
 tr:nth-child(2n) {
@@ -71,7 +70,7 @@ tr:nth-child(2n) {
 }
 
 td {
-  padding: 5px 20px 5px 10px;
+  padding: 10px 20px 5px 8px;
 }
 
 label {
@@ -94,8 +93,9 @@ input[type="text"] {
   margin-left: 7px;
   width: 300px;
   border-width: 1px;
+  border-radius: 3px;
   border-style: solid;
-  border-color: darkgray;
+  border-color: rgb(209, 207, 207);
 }
 
 .error {
