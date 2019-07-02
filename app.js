@@ -1,11 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 // model import
 var Book = require("./models").Book;
 
 // --------------- Configure Express ---------------
 const app = express();
+
+// method-override for PUT and DELETE verbs
+app.use(methodOverride("_method"));
 
 // pug templates
 app.set("view engine", "pug");
@@ -78,7 +82,7 @@ app.get("/detail/:id", (req, res, next) => {
 });
 
 // update book
-app.post("/detail/:id/update", (req, res, next) => {
+app.put("/detail/:id/update", (req, res, next) => {
   Book.findByPk(req.params.id)
     .then(book => {
       if (book) {
@@ -108,7 +112,7 @@ app.post("/detail/:id/update", (req, res, next) => {
 });
 
 // delete book
-app.post("/detail/:id/delete", (req, res, next) => {
+app.delete("/detail/:id/delete", (req, res, next) => {
   Book.findByPk(req.params.id)
     .then(book => {
       if (book) {
