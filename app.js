@@ -38,22 +38,22 @@ app.get("/books", (req, res) => {
     });
 });
 
-// create new book
-app.get("/create", (req, res) => {
-  res.render("create", {
+// New book
+app.get("/new", (req, res) => {
+  res.render("new-book", {
     book: Book.build()
   });
 });
 
 // post create new book
-app.post("/create", (req, res, next) => {
+app.post("/new", (req, res, next) => {
   Book.create(req.body)
     .then(() => {
       res.redirect("/books");
     })
     .catch(err => {
       if (err.name === "SequelizeValidationError") {
-        res.render("create", {
+        res.render("new-book", {
           book: Book.build(req.body),
           errors: err.errors
         });
@@ -67,13 +67,13 @@ app.post("/create", (req, res, next) => {
 });
 
 // detail book
-app.get("/detail/:id", (req, res, next) => {
+app.get("/books/:id", (req, res, next) => {
   Book.findByPk(req.params.id)
     .then(book => {
       if (book) {
         res.render("detail", { book: book });
       } else {
-        res.send(404);
+        next();
       }
     })
     .catch(err => {
@@ -82,7 +82,7 @@ app.get("/detail/:id", (req, res, next) => {
 });
 
 // update book
-app.put("/detail/:id/update", (req, res, next) => {
+app.put("/books/:id", (req, res, next) => {
   Book.findByPk(req.params.id)
     .then(book => {
       if (book) {
@@ -112,7 +112,7 @@ app.put("/detail/:id/update", (req, res, next) => {
 });
 
 // delete book
-app.delete("/detail/:id/delete", (req, res, next) => {
+app.delete("/books/:id/delete", (req, res, next) => {
   Book.findByPk(req.params.id)
     .then(book => {
       if (book) {
